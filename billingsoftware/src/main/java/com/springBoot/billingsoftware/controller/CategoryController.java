@@ -48,6 +48,7 @@ public class CategoryController {
         try{
             categoryService.delete(categoryId);
         }catch (Exception e){
+
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, e.getMessage());
         }
     }
