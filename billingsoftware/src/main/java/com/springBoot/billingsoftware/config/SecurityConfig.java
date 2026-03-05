@@ -32,6 +32,7 @@ import java.util.List;
 public class SecurityConfig {
     private final AppUserDetailsService appUserDetailsService;
     private  final JwtRequestFilter jwtRequestFilter;
+
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception{
         http.cors(Customizer.withDefaults())
@@ -65,6 +66,8 @@ public class SecurityConfig {
         source.registerCorsConfiguration("/**",config);
         return source;
     }
+
+    @Bean
     public AuthenticationManager authenticationManager(){
         DaoAuthenticationProvider authProvider=new DaoAuthenticationProvider();
         authProvider.setUserDetailsService(appUserDetailsService);

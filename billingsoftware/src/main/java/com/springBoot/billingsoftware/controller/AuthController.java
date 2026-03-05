@@ -30,6 +30,7 @@ public class AuthController {
     private final AppUserDetailsService appUserDetailsService;
     private final JwtUtil jwtUtil;
     private  final UserService userService;
+
     @PostMapping("/login")
     public AuthResponse login(@RequestBody AuthRequest request) throws Exception{
         authenticate(request.getEmail(),request.getPassword());

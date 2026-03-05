@@ -18,13 +18,13 @@ public class JwtUtil {
     @Value("${jwt.secret.key}")
     private  String SECRET_KEY;
     public String generateToken(UserDetails userDetails) {
-        Map<String, Object> claiams = new HashMap();
-        return createToken(claiams, userDetails.getUsername());
+        Map<String, Object> claims = new HashMap();
+        return createToken(claims, userDetails.getUsername());
     }
 
-    private String createToken(Map<String, Object> claiams, String subject) {
+    private String createToken(Map<String, Object> claims, String subject) {
         return Jwts.builder()
-                .setClaims(claiams)
+                .setClaims(claims)
                 .setSubject(subject)
                 .setIssuedAt(new Date(System.currentTimeMillis()))
                 .setExpiration(new Date(System.currentTimeMillis() + 1000 * 60 * 60 * 10))
